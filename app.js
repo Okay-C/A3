@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const path = require('path');
 
 dotenv.config();
 
