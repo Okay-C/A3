@@ -26,6 +26,8 @@ app.use('/', indexRoutes);
 const assignmentRoutes = require('./routes/assignments');
 app.use('/assignments', assignmentRoutes);
 
+app.set('views', path.join(__dirname, 'views'));
+
 // Server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
