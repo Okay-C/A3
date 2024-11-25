@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+  <title>Assignment Tracker</title>
+</head>
+<body>
+    <%- include('partials/header') %>
+
+  <div class="container">
+    <h2>Welcome to Assignment Tracker!</h2>
+    <a href="/assignments">
+        <button type="button" class="btnmenu">View All Assignments</button>
+    </a>
+
+    <div class="container">
+    
+        <% if (assignments.length > 0) { %> <!-- Display assignments on main menu -->
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Due Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% assignments.forEach(assignment => { %>
+                <tr>
+                  <td><%= assignment.title %></td>
+                  <td><%= assignment.description %></td>
+                  <td><%= assignment.dueDate.toISOString().split('T')[0] %></td>
+                  <td><%= assignment.status %></td>
+                </tr>
+              <% }); %>
+            </tbody>
+          </table>
+        <% } else { %>
+          <p>No assignments found. <a href="/assignments/new">Create one now!</a></p> <!-- If none show message -->
+        <% } %>
+      </div>
+    </div>
+
+      <%- include('partials/footer') %>
+</body>
+</html>

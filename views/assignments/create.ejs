@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/styles.css">
+  <title>Create Assignment</title>
+</head>
+<body>
+  <%- include('../partials/header') %>
+
+  <div class="container"> <!-- Create Menu Form-->
+    <h1>Create a New Assignment</h1>
+    <form action="/assignments" method="POST">
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" class="form-control" rows="4"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="dueDate">Due Date:</label>
+        <input type="date" id="dueDate" name="dueDate" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="status">Status:</label>
+        <select id="status" name="status" class="form-control">
+          <option value="Pending" selected>Pending</option>
+          <option value="Completed">Completed</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btnform">Create Assignment</button> <!-- Create assignment button-->
+    </form>
+  </div>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

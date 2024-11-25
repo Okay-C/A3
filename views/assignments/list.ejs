@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/styles.css">
+  <title>Assignments</title>
+</head>
+<body>
+  <%- include('../partials/header') %>
+
+  <div class="container"> <!-- Display list of assignments -->
+    <h2>Assignment List</h2>
+    <a href="/assignments/new">
+        <button type="button" class="btnmenu">Add New Assignment</button>
+      </a>
+
+    <% if (assignments.length > 0) { %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% assignments.forEach(assignment => { %> <!-- Check assignment details and Edit button with confirmation delete alert -->
+            <tr>
+              <td><%= assignment.title %></td>
+              <td><%= assignment.description %></td>
+              <td><%= assignment.dueDate.toISOString().split('T')[0] %></td>
+              <td><%= assignment.status %></td>
+              <td>
+                <a href="/assignments/<%= assignment._id %>/edit">
+                    <button type="submit" class="btnform">Edit</button>
+                </a>
+                <form action="/assignments/<%= assignment._id %>?_method=DELETE" method="POST" style="display:inline;">
+                  <button type="submit" class="btnform" onclick="return confirm('Are you sure you want to delete this assignment?');">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <p>No assignments found...</p>
+    <% } %>
+  </div>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>
